@@ -177,31 +177,57 @@ bookList.previousElementSibling.querySelector('p').innerHTML += '<br/> Too cool 
 
 // -------------------------------------------------------------------------------------------------------------
 
+// comment below Event Bubbling part to make this code work
+
 // DOM EVENTS AND REMOVING CONTENT
 
 
-var btns = document.querySelectorAll("#book-list .delete");
+// var btns = document.querySelectorAll("#book-list .delete");
 
-Array.from(btns).forEach(function(btn){
-    // Adding event to every delete button
-    btn.addEventListener('click', function(e){
-        // Getting every buttons parent element
-        const li = e.target.parentElement;
-        // Removing child from parentnode (ul) 
-        li.parentNode.removeChild(li);
-    })
-})
+// Array.from(btns).forEach(function(btn){
+//     // Adding event to every delete button
+//     btn.addEventListener('click', function(e){
+//         // Getting every buttons parent element
+//         const li = e.target.parentElement;
+//         // Removing child from parentnode (ul) 
+//         li.parentNode.removeChild(li);
+//     })
+// })
 
-// If we want to change the deault behaviour of the particulat element then we can do it using events
-var link = document.querySelector("#page-banner a");
+// // If we want to change the deault behaviour of the particulat element then we can do it using events
+// var link = document.querySelector("#page-banner a");
 
-link.addEventListener('click', function(e){
-    // This will going to prevent the link to do its work
-    e.preventDefault();
-    console.log('navigation to ', e.target.textContent, ' was prevented');
-})
+// link.addEventListener('click', function(e){
+//     // This will going to prevent the link to do its work
+//     e.preventDefault();
+//     console.log('navigation to ', e.target.textContent, ' was prevented');
+// })
 
 
 // ------------------------------------------------------------------------------
 
+// Comment above DOM EVENTS AND REMOVING CONTENT part to make this code work
 
+// Event bubbling
+
+// This concept is come because if we change html from inspect element and add another li tag to it then event can't be added to that particular li because app.js is already loaded
+// And one another drawback of adding events to the button is we hadd to go to every button to add a event which takes very much time
+
+// So via event bubbling we can set even to ul and whenever we hit delete it goes to ul and the remove the paricular element whose delete is clicked
+
+// Selecting ul tag
+var list = document.querySelector('#book-list ul');
+
+// Adding event to ul tag
+list.addEventListener('click', function(e){
+    // If element with className delete is clicked
+    if(e.target.className == 'delete'){
+        // Then go to li tag(Parent of element constaining class delete)
+        var li = e.target.parentElement;
+
+        // Remove that particular li tag from ul tag
+        list.removeChild(li);
+    }
+})
+
+// ------------------------------------------------------------------------------------------
