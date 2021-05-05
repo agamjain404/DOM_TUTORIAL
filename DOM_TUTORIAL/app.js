@@ -99,3 +99,32 @@ console.log(bookList.innerHTML);    //This will print all the HTML of elements p
 
 
 // --------------------------------------------------------------------------
+
+// DOM NODES
+
+// Nodes can be of many types like
+// Attribute node , Element Node, Text Node
+// Study regarding this on => https://www.w3schools.com/jsref/prop_node_nodetype.asp
+
+const banner = document.querySelector('#page-banner');
+
+// Node type will be type number 
+console.log("#page-banner node type is ",banner.nodeType);
+
+// Node name will be element name
+console.log("#page-banner node name is ",banner.nodeName);
+
+// Always gives boolean if node has child nodes then true otherwise false
+console.log("#page-banner has child nodes ", banner.hasChildNodes());
+
+// If we want to clone a node with its child the we can use this command
+const clonedBannerWithChild = banner.cloneNode(true);
+console.log(clonedBannerWithChild);
+
+// If we want to clone a node without its child then use this command
+const clonedBannerWithoutChild = banner.cloneNode(false);
+console.log(clonedBannerWithoutChild);
+
+// ---------------------------------------------------------------------------------------
+
+
