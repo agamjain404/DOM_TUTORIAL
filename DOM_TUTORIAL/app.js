@@ -194,6 +194,7 @@ bookList.previousElementSibling.querySelector('p').innerHTML += '<br/> Too cool 
 //     })
 // })
 
+//  // Uncomment the a tag present inside <div id = "page-banner"></div> to make this work
 // // If we want to change the deault behaviour of the particulat element then we can do it using events
 // var link = document.querySelector("#page-banner a");
 
@@ -231,3 +232,30 @@ list.addEventListener('click', function(e){
 })
 
 // ------------------------------------------------------------------------------------------
+
+// FORMS
+
+// returns all the forms in an  array
+console.log(document.forms);
+
+// return a praticular form
+console.log(document.forms[0]);
+
+// return a form with particular id
+console.log(document.forms['add-book']);
+
+// Forms default behaviour is to refresh the page so we are going to prevent it by adding event below
+var addForm = document.forms['add-book'];
+addForm.addEventListener('submit', function(e){
+    // Preventing refresh of page
+    e.preventDefault();
+
+    // Grabbing the value present inside the input box
+    var value = addForm.querySelector('input[type = "text"]').value;
+    
+    // Prints the value present inside the input box on to the console
+    console.log(value);
+})
+
+// ---------------------------------------------------------------------------------------------
+
