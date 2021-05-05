@@ -1,5 +1,3 @@
-// document methods will always going to return HTMLCollection 
-// It will never return arrays
 
 // -------------------------------------------------------
 
@@ -65,6 +63,8 @@ Array.from(elemByTags).forEach(function(item){
 
 // -------------------------------------------------------------------------
 
+// These woll going to return NodeList not HTMLCollection
+
 // QuerySelector
 
 // Always returns single element
@@ -72,13 +72,30 @@ var book = document.querySelector("#book-list>ul>li>.name");
 // It prints the first element matched with the selector
 console.log(book);
 
-// It will going to return a HTMLCollection containing elements matched with the provided selector
+// It will going to return a NodeList containing elements matched with the provided selector
 var books = document.querySelectorAll("#book-list>ul>li>.name");
 console.log(books);
 
-// Now to iterate it we can use normal for loop but if we want to iterate with forEach then we had to convert this collection into array
+// Now to iterate it we can use normal for loop but if we want to iterate with forEach then we had to convert this NodeList into array
 Array.from(books).forEach(function(item){
     console.log(item);
 })
 
 // -----------------------------------------------------------------------------
+
+//Editing HTML
+
+var books = document.querySelectorAll("#book-list li .name");
+Array.from(books).forEach(function(book){
+    // book.textContent = 'text';      // This will change the content of the elements present inside the books
+    // book.textContent += '(book title)'; //This will going to append the content in the elements present inside the books 
+})
+
+
+const bookList = document.querySelector("#book-list");
+console.log(bookList.innerHTML);    //This will print all the HTML of elements present inside bookList
+// bookList.innerHTML = "<h2>Agam Jain is here</h2>";  //This will going to change the innerHTML of the elements present inside it
+// bookList.innerHTML += "<p> Agam jain is so cool </p>";  //This will apprnd this HTML to the already present html
+
+
+// --------------------------------------------------------------------------
