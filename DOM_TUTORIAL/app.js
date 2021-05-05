@@ -92,7 +92,7 @@ Array.from(books).forEach(function(book){
 })
 
 
-const bookList = document.querySelector("#book-list");
+var bookList = document.querySelector("#book-list");
 console.log(bookList.innerHTML);    //This will print all the HTML of elements present inside bookList
 // bookList.innerHTML = "<h2>Agam Jain is here</h2>";  //This will going to change the innerHTML of the elements present inside it
 // bookList.innerHTML += "<p> Agam jain is so cool </p>";  //This will apprnd this HTML to the already present html
@@ -128,3 +128,29 @@ console.log(clonedBannerWithoutChild);
 // ---------------------------------------------------------------------------------------
 
 
+// DOM TRAVERSAL FROM PARENT TO CHILD AND VICE VERSA
+
+// This is from child to parent
+
+var bookList = document.querySelector('#book-list');
+
+// This will going to give us the parentNode of the element present inside bookList;
+console.log('The parent node is ', bookList.parentNode);
+
+// This also works same as parentNode
+console.log('The parent element is ', bookList.parentElement);
+
+// We can als do it like this to parent's parent
+console.log('The grand-parent element is ', bookList.parentElement.parentElement);
+
+
+// This is from parent to child
+
+// When we hit this we get some extra nodes in array named text
+// Those are line-breaks in html 
+console.log(bookList.childNodes);
+
+// So to avoid line-breaks we can hit this command  
+console.log(bookList.children);
+
+// -------------------------------------------------
