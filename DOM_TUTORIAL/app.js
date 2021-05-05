@@ -246,6 +246,7 @@ console.log(document.forms['add-book']);
 
 // Forms default behaviour is to refresh the page so we are going to prevent it by adding event below
 var addForm = document.forms['add-book'];
+var list = document.querySelector('#book-list ul');
 addForm.addEventListener('submit', function(e){
     // Preventing refresh of page
     e.preventDefault();
@@ -254,8 +255,115 @@ addForm.addEventListener('submit', function(e){
     var value = addForm.querySelector('input[type = "text"]').value;
     
     // Prints the value present inside the input box on to the console
-    console.log(value);
+    // console.log(value);
+
+    // create elements
+    var li = document.createElement('li');
+    var bookName = document.createElement('span');
+    var deletBtn = document.createElement('span');
+
+    // add content
+    deletBtn.textContent = 'delete';
+    bookName.textContent = value;
+
+    // li.className ='test';    Adds class test to li
+    // li.className += 'test1';    appends one another class named test1 to li 
+    // li.classList ---> returns the list of classes
+
+    // Add classes
+    bookName.classList.add('name');
+    deletBtn.classList.add('delete');
+
+    // Appending to document
+    li.appendChild(bookName);
+    li.appendChild(deletBtn);
+    list.appendChild(li);
 })
 
 // ---------------------------------------------------------------------------------------------
 
+
+// Changing attributes of a element
+
+// var book = document.querySelector('li: first-child .name');
+
+// // To get a attribute value
+// book.getAttribute('class');
+
+// // To set a attribute
+// book.setAttribute('class', 'name');
+
+// // To check if a element has a paricular attribute
+// book.hasAttribute('class');     //Returns boolean value
+
+// // To remove a attribute
+// book.removeAttribute('class');
+
+
+
+// --------------------------------------------------------------------------
+
+// CheckBox Events
+
+
+var hideBox = document.querySelector('#hide');
+var list = document.querySelector('#book-list ul');
+
+hideBox.addEventListener('change', function(e){
+    // Check if hideBox is checked or not
+    if(hideBox.checked){
+        list.style.display = "none";
+    }else{
+        list.style.display = "initial";
+    }
+})
+
+// ---------------------------------------------------------------------------------------
+
+// Custom Search Filter
+
+var searchBar = document.forms['search-books'].querySelector('input');
+
+searchBar.addEventListener('keyup', function(e){
+    // Converting value written inside textbox to lower case
+    const term = e.target.value.toLowerCase();
+
+    // Taking books from tag li
+    const books = list.getElementsByTagName('li');
+
+    // Iterating thrugh array
+    Array.from(books).forEach(function(books){
+        // inserting text of firstElement of li in title
+        var title = book.firstElementChild.textContent;
+
+        // Making title lowercase and comparing it with term
+        if(title.toLowerCase().indexOf(term)!= -1){
+            // If it not returns -1 then display block
+            book.style.display = 'block';
+        }else{
+            // Otherwise display nonr
+            book.stylr.display = 'none';
+        }
+    })
+})
+
+// -----------------------------------------------------------------------------------------------
+
+
+// Tabbed content
+
+var tabs = document.querySelector('.tabs');
+var panels = document.querySelectorAll('.panel');
+
+tabs.addEventListener('click', function(e){
+    if(e.target.tagName == 'LI'){
+        const targetPanel = document.querySelector(e.target.dataset.target);
+        panels.forEach(function(panel){
+            if(panel == targetPanel){
+                panel.classList.add('active');
+            }else{
+                panel.classList.remove('active');
+            }
+        })
+    }
+})
