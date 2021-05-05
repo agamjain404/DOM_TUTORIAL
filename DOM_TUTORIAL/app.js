@@ -153,4 +153,31 @@ console.log(bookList.childNodes);
 // So to avoid line-breaks we can hit this command  
 console.log(bookList.children);
 
-// -------------------------------------------------
+// --------------------------------------------------------------------------------------------------
+
+// DOM TRAVERSAL FROM SIBLING TO SIBLING
+
+
+var bookList = document.querySelector('#book-list');
+
+// This wil give you text node because of line break
+console.log('book-list next sibling is', bookList.nextSibling);
+
+// This will give you next element
+console.log('book-list next element sibling is ', bookList.nextElementSibling);
+
+// This wil give you text node because of line break
+console.log('book-list previous sibling is ', bookList.previousSibling);
+
+// This will give you next element
+console.log('book-list previous element element sibling is:', bookList.previousElementSibling);
+
+// This will going to give you previous sibling element of bookList and then select the p element from it and append the content in it
+bookList.previousElementSibling.querySelector('p').innerHTML += '<br/> Too cool for everyone else!';
+
+// -------------------------------------------------------------------------------------------------------------
+
+
+
+
+
