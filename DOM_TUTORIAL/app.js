@@ -177,7 +177,31 @@ bookList.previousElementSibling.querySelector('p').innerHTML += '<br/> Too cool 
 
 // -------------------------------------------------------------------------------------------------------------
 
+// DOM EVENTS AND REMOVING CONTENT
 
 
+var btns = document.querySelectorAll("#book-list .delete");
+
+Array.from(btns).forEach(function(btn){
+    // Adding event to every delete button
+    btn.addEventListener('click', function(e){
+        // Getting every buttons parent element
+        const li = e.target.parentElement;
+        // Removing child from parentnode (ul) 
+        li.parentNode.removeChild(li);
+    })
+})
+
+// If we want to change the deault behaviour of the particulat element then we can do it using events
+var link = document.querySelector("#page-banner a");
+
+link.addEventListener('click', function(e){
+    // This will going to prevent the link to do its work
+    e.preventDefault();
+    console.log('navigation to ', e.target.textContent, ' was prevented');
+})
+
+
+// ------------------------------------------------------------------------------
 
 
